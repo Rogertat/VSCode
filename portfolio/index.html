@@ -385,6 +385,56 @@
   </section>
 </main>
 
+<!-- ============================= COMPANION ============================= -->
+<!-- mini-Roger: the page buddy. Eyes track the cursor, blinks, waves, naps,
+     and quips per section. To swap in an anime portrait of yourself later,
+     replace the <svg> below with <img src="assets/your-anime.png" alt=""> —
+     the bob/bubble/dismiss rig keeps working (eye-tracking is SVG-only). -->
+<div class="companion" data-companion>
+  <div class="companion-bubble" role="status" aria-live="polite"></div>
+  <button class="companion-close" type="button" data-companion-close aria-label="Dismiss mini-Roger">&#215;</button>
+  <button class="companion-figure" type="button" data-companion-poke aria-label="mini-Roger, your page buddy — click for a quip">
+    <svg viewBox="0 0 120 150" width="104" height="130" aria-hidden="true">
+      <defs>
+        <linearGradient id="hoodieG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#6c4cf1"/><stop offset="1" stop-color="#8a5cf5"/>
+        </linearGradient>
+      </defs>
+      <!-- legs -->
+      <rect x="42" y="116" width="13" height="20" rx="6.5" fill="#2d2647"/>
+      <rect x="65" y="116" width="13" height="20" rx="6.5" fill="#2d2647"/>
+      <!-- arms (right one waves) -->
+      <g class="arm-l">
+        <rect x="20" y="80" width="13" height="32" rx="6.5" fill="#5a3fd4"/>
+        <circle cx="26.5" cy="112" r="6.5" fill="#b07b50"/>
+      </g>
+      <g class="arm-r">
+        <rect x="87" y="80" width="13" height="32" rx="6.5" fill="#5a3fd4"/>
+        <circle cx="93.5" cy="112" r="6.5" fill="#b07b50"/>
+      </g>
+      <!-- hoodie body -->
+      <path d="M32 92 q0 -20 28 -20 q28 0 28 20 v20 q0 10 -10 10 h-36 q-10 0 -10 -10 z" fill="url(#hoodieG)"/>
+      <path d="M47 106 h26 v7 q0 5 -5 5 h-16 q-5 0 -5 -5 z" fill="#5a3fd4"/>
+      <!-- head -->
+      <circle cx="60" cy="44" r="33" fill="#b07b50"/>
+      <!-- hair -->
+      <path d="M27 42 Q28 15 60 12 Q92 15 93 42 Q83 30 70 31 Q63 20 54 30 Q40 29 27 42 Z" fill="#1c1530"/>
+      <!-- eyes -->
+      <g class="eye"><ellipse cx="47" cy="50" rx="7" ry="7.5" fill="#fff"/><circle class="pupil" cx="47" cy="51" r="3.2" fill="#1c1530"/></g>
+      <g class="eye"><ellipse cx="73" cy="50" rx="7" ry="7.5" fill="#fff"/><circle class="pupil" cx="73" cy="51" r="3.2" fill="#1c1530"/></g>
+      <!-- glasses -->
+      <g stroke="#1c1530" stroke-width="2.4" fill="none">
+        <circle cx="47" cy="50" r="10.5"/><circle cx="73" cy="50" r="10.5"/>
+        <path d="M57.5 50 h5"/><path d="M36.5 47 l-7 -3"/><path d="M83.5 47 l7 -3"/>
+      </g>
+      <!-- smile + blush -->
+      <path d="M52 65 q8 7 16 0" stroke="#1c1530" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="37" cy="60" r="3.5" fill="#ff5d6c" opacity="0.45"/>
+      <circle cx="83" cy="60" r="3.5" fill="#ff5d6c" opacity="0.45"/>
+    </svg>
+  </button>
+</div>
+
 <!-- ============================= FOOTER ============================= -->
 <footer class="site-footer">
   <div class="wrap footer-inner">
