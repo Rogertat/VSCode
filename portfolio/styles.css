@@ -351,6 +351,36 @@ html:not(.js) .hl::after, .is-visible .hl::after, html.reveal-off .hl::after { t
 .socials a { color: var(--ink-soft); text-decoration: none; font-weight: 700; }
 .socials a:hover { color: var(--c5); }
 
+/* --- the oracle: a tiny, extremely serious inference engine ------------- */
+.oracle {
+  max-width: 36rem; margin: 0 auto 2.4rem; text-align: left;
+  border: 2px solid var(--ink); border-radius: var(--radius-sm);
+  background: #171223; box-shadow: 8px 8px 0 var(--c4); overflow: hidden;
+}
+.oracle-bar {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.6rem 0.9rem; background: #221a36; border-bottom: 1px solid #322a4d;
+}
+.oracle-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.d1 { background: var(--c1); } .dot.d2 { background: var(--c3); } .dot.d3 { background: var(--c4); }
+.oracle-bar code { font-family: var(--font-mono); font-size: 0.72rem; color: #8f84b3; margin-left: 0.4rem; }
+.oracle-screen { padding: 1rem 1.1rem 0.6rem; min-height: 7.5rem; }
+.oracle-line {
+  font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.55;
+  color: #b9f0e4; margin: 0 0 0.35rem; overflow-wrap: anywhere;
+}
+.oracle-line.verdict { color: #ffd166; font-weight: 700; }
+.oracle-screen .oracle-line:last-child::after { content: "▋"; margin-left: 2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.oracle-run {
+  display: block; width: 100%; padding: 0.85rem 1rem;
+  font-family: var(--font-mono); font-weight: 700; font-size: 0.9rem;
+  color: #171223; background: var(--c4); border: 0; border-top: 2px solid var(--ink);
+  cursor: pointer; transition: background var(--t), letter-spacing var(--t);
+}
+.oracle-run:hover:not(:disabled) { background: var(--c3); letter-spacing: 0.06em; }
+.oracle-run:disabled { background: #4b4368; color: #b3abd1; cursor: wait; }
+
 .contact-list { list-style: none; margin: 2.4rem auto 0; padding: 0; display: grid; gap: 0.6rem; max-width: 33rem; text-align: left; }
 .contact-list li {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;

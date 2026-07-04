@@ -170,4 +170,101 @@
     window.addEventListener("resize", updateActive);
     updateActive();
   }
+
+  /* ---- The oracle: a tiny, extremely serious inference engine -------- */
+  var oracleBtn = document.querySelector("[data-oracle]");
+  var oracleScreen = document.querySelector("[data-oracle-screen]");
+  if (oracleBtn && oracleScreen) {
+    var STAGES = [
+      "> tokenizing your curiosity... done",
+      "> loading 6+ yrs of experience [##########] 100%",
+      "> attention: all heads on you",
+      "> sampling verdict (temperature=0.9)..."
+    ];
+    var VERDICTS = [
+      "P(Roger replies fast) = 0.997 - the missing 0.003 is sleep.",
+      "verdict: HIRE_SIGNAL_DETECTED. recommended action: scroll down, hit email.",
+      "output: 42. re-ran it to be safe. still 42. email him.",
+      "your roadmap x Roger -> shipped. confidence: uncomfortably high.",
+      "warning: candidate may refactor your pipeline out of sheer curiosity.",
+      "fully grounded, citation-backed conclusion: you should say hi."
+    ];
+    var running = false;
+    var print = function (text, cls) {
+      var p = document.createElement("p");
+      p.className = "oracle-line" + (cls ? " " + cls : "");
+      p.textContent = text;
+      oracleScreen.appendChild(p);
+      while (oracleScreen.children.length > 6) oracleScreen.removeChild(oracleScreen.firstChild);
+    };
+    oracleBtn.addEventListener("click", function () {
+      if (running) return;
+      running = true;
+      oracleBtn.disabled = true;
+      oracleBtn.textContent = "inferencing...";
+      var verdict = "> " + VERDICTS[Math.floor(Math.random() * VERDICTS.length)];
+      if (prefersReducedMotion) {
+        STAGES.forEach(function (s) { print(s); });
+        print(verdict, "verdict");
+        running = false;
+        oracleBtn.disabled = false;
+        oracleBtn.textContent = "▶ Run it again";
+        return;
+      }
+      var i = 0;
+      var step = function () {
+        if (i < STAGES.length) {
+          print(STAGES[i++]);
+          setTimeout(step, 420 + Math.random() * 380);
+        } else {
+          print(verdict, "verdict");
+          running = false;
+          oracleBtn.disabled = false;
+          oracleBtn.textContent = "▶ Run it again";
+        }
+      };
+      setTimeout(step, 250);
+    });
+  }
+
+  /* ---- Hero blobs drift toward the pointer (fine pointers only) ------ */
+  var blobs = document.querySelectorAll(".blob");
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+  if (blobs.length && finePointer && !prefersReducedMotion) {
+    var hero = document.querySelector(".hero");
+    var ticking = false, mx = 0, my = 0;
+    hero.addEventListener("mousemove", function (e) {
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(function () {
+          ticking = false;
+          blobs.forEach(function (b, i) {
+            var depth = (i + 1) * 9;
+            b.style.translate = mx * depth + "px " + my * depth + "px";
+          });
+        });
+      }
+    });
+  }
+
+  /* ---- For the ones who open the console (hello, fellow engineer) ---- */
+  try {
+    var art = [
+      "%c  ____                        ",
+      " |  _ \\ ___   __ _  ___ _ __ ",
+      " | |_) / _ \\ / _` |/ _ \\ '__|",
+      " |  _ < (_) | (_| |  __/ |   ",
+      " |_| \\_\\___/ \\__, |\\___|_|   ",
+      "             |___/            "
+    ].join("\n");
+    console.log(art, "color:#6c4cf1; font-weight:bold");
+    console.log(
+      "%cCurious enough to open the console? We'd get along.\n" +
+      "%cAI/ML engineer, 6+ yrs, currently @ Xerago. -> roger29995@gmail.com",
+      "color:#12b3a3; font-size:13px; font-weight:bold",
+      "color:#888; font-size:12px"
+    );
+  } catch (e) {}
 })();

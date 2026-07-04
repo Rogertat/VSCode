@@ -17,8 +17,12 @@ JavaScript. No build step, no framework.
   highlighter-marker headline, drifting colour blobs, and a scrolling tech marquee.
 - **Light & dark mode** — respects the system preference and remembers your
   choice.
-- **Motion, done tastefully** — scroll reveals, hover micro-interactions, and an
-  auto-scrolling marquee, all disabled under `prefers-reduced-motion`.
+- **Motion, done tastefully** — scroll reveals, hover micro-interactions, blobs
+  that drift toward the pointer, and an auto-scrolling marquee — all disabled
+  under `prefers-reduced-motion`.
+- **Easter eggs** — "roger-oracle", a tiny fake-inference terminal in the contact
+  section that predicts whether you should reach out, and an ASCII greeting in
+  the browser console for engineers who peek.
 - **Fully responsive**, with a mobile drawer navigation.
 - **Accessible** — semantic HTML, skip link, keyboard-friendly, visible focus
   states, and honors `prefers-reduced-motion`.
