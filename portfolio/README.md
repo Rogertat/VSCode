@@ -4,7 +4,8 @@ A personal portfolio site for **Roger, AI/ML Engineer**. Bold, colorful, respons
 accessible, and dependency-free — plain HTML, CSS, and a little vanilla
 JavaScript. No build step, no framework.
 
-> **Live site:** _add your GitHub Pages or custom-domain URL here once deployed._
+> **Live site:** <https://rogertat.github.io/VSCode/> — deployed automatically
+> from `main` by the GitHub Actions workflow in `.github/workflows/pages.yml`.
 
 <p align="center">
   <img src="assets/og-image.svg" alt="Roger — AI/ML Engineer" width="640" />
