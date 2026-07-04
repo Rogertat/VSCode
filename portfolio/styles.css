@@ -299,6 +299,7 @@ html:not(.js) .hl::after, .is-visible .hl::after, html.reveal-off .hl::after { t
 .skill-card::after {
   content: attr(data-icon);
   position: absolute; right: -0.4rem; bottom: -0.9rem;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   font-size: 4.6rem; line-height: 1; opacity: 0.08;
   transform: rotate(-14deg) scale(0.9);
   transition: transform var(--t), opacity var(--t);
