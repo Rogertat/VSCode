@@ -91,6 +91,8 @@
       <span class="blob blob-3"></span>
       <span class="blob blob-4"></span>
     </div>
+    <!-- live neural net: neurons drift, link, chase your cursor; click to fire -->
+    <canvas class="neural" aria-hidden="true"></canvas>
 
     <div class="wrap hero-inner">
       <p class="status reveal"><span class="status-dot" aria-hidden="true"></span> Open to new opportunities</p>
@@ -150,10 +152,13 @@
           in production.
         </p>
         <p>
-          My work spans NLP, recommendation, and computer vision, with a recent obsession
-          with large language models, retrieval-augmented generation, and evaluation. I love
-          the spot where solid research meets careful engineering: reproducible experiments,
-          clean data pipelines, and monitoring that catches drift before users do.
+          My work spans NLP, recommendation, and computer vision — and lately, the frontier
+          I can't put down: <strong>AI agents</strong>. LLMs that don't just answer questions
+          but plan, call tools, write code, and check their own work — orchestrated with
+          LangGraph, AutoGen, and MCP, grounded with retrieval, and held honest by ruthless
+          evaluation. I love the spot where solid research meets careful engineering:
+          reproducible experiments, clean pipelines, and monitoring that catches drift
+          before users do.
         </p>
         <p>
           Off the clock, I write about applied ML and mentor engineers making the jump from
@@ -178,31 +183,31 @@
       <h2 class="section-title reveal">Things I'm <span class="squiggle">good at</span></h2>
       <!-- EDIT: adjust groups + tags to match your stack -->
       <div class="skills-grid">
-        <article class="skill-card reveal" style="--accent: var(--c1)">
+        <article class="skill-card reveal" data-icon="🧠" style="--accent: var(--c1)">
           <h3>Machine Learning</h3>
           <ul class="chips"><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>XGBoost</li><li>Keras</li></ul>
         </article>
-        <article class="skill-card reveal" style="--accent: var(--c2)">
+        <article class="skill-card reveal" data-icon="💬" style="--accent: var(--c2)">
           <h3>Deep Learning &amp; NLP</h3>
           <ul class="chips"><li>Transformers</li><li>LLMs</li><li>Hugging Face</li><li>RAG</li><li>Diffusion</li></ul>
         </article>
-        <article class="skill-card reveal" style="--accent: var(--c6)">
+        <article class="skill-card reveal" data-icon="🤖" style="--accent: var(--c6)">
           <h3>AI Agents &amp; Agentic Frameworks</h3>
           <ul class="chips"><li>LangGraph</li><li>AutoGen</li><li>CrewAI</li><li>MCP</li><li>ReAct</li><li>Tool use</li><li>Multi-agent</li></ul>
         </article>
-        <article class="skill-card reveal" style="--accent: var(--c3)">
+        <article class="skill-card reveal" data-icon="⚙️" style="--accent: var(--c3)">
           <h3>MLOps &amp; Infra</h3>
           <ul class="chips"><li>Docker</li><li>Kubernetes</li><li>MLflow</li><li>Airflow</li><li>Ray</li><li>AWS / GCP</li></ul>
         </article>
-        <article class="skill-card reveal" style="--accent: var(--c4)">
+        <article class="skill-card reveal" data-icon="📊" style="--accent: var(--c4)">
           <h3>Languages &amp; Data</h3>
           <ul class="chips"><li>Python</li><li>SQL</li><li>Spark</li><li>Pandas</li><li>NumPy</li></ul>
         </article>
-        <article class="skill-card reveal" style="--accent: var(--c5)">
+        <article class="skill-card reveal" data-icon="🚀" style="--accent: var(--c5)">
           <h3>Serving &amp; APIs</h3>
           <ul class="chips"><li>FastAPI</li><li>gRPC</li><li>ONNX</li><li>Triton</li><li>Vector DBs</li></ul>
         </article>
-        <article class="skill-card reveal" style="--accent: var(--c1)">
+        <article class="skill-card reveal" data-icon="🧪" style="--accent: var(--c1)">
           <h3>Practices</h3>
           <ul class="chips"><li>Experiment tracking</li><li>CI/CD</li><li>Evaluation</li><li>Monitoring</li><li>A/B testing</li></ul>
         </article>
@@ -210,8 +215,71 @@
     </div>
   </section>
 
+  <!-- ============================= VOICES ============================= -->
+  <section class="section" id="voices" aria-labelledby="voices-title">
+    <div class="wrap">
+      <h2 class="section-title reveal" id="voices-title">Voices in my <span class="squiggle">training data</span></h2>
+      <p class="voices-sub reveal">Every engineer is fine-tuned on someone. My gradient updates come from these folks.</p>
+      <div class="voices-grid">
+        <figure class="voice-card reveal" style="--accent: var(--c5)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">AK</span>
+            <span><strong>Andrej Karpathy</strong><em>OpenAI founding team · ex-Tesla AI</em></span>
+          </figcaption>
+          <blockquote>"The hottest new programming language is English."</blockquote>
+          <code class="voice-meta">sample_0001 · influence_weight: 0.97 · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c1)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">DA</span>
+            <span><strong>Dario Amodei</strong><em>CEO, Anthropic</em></span>
+          </figcaption>
+          <blockquote>"A country of geniuses in a datacenter."</blockquote>
+          <code class="voice-meta">sample_0002 · influence_weight: 0.94 · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c4)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">AN</span>
+            <span><strong>Andrew Ng</strong><em>Founder, DeepLearning.AI</em></span>
+          </figcaption>
+          <blockquote>"AI is the new electricity."</blockquote>
+          <code class="voice-meta">sample_0003 · first_epoch: true · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c2)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">EM</span>
+            <span><strong>Elon Musk</strong><em>xAI · Tesla · SpaceX</em></span>
+          </figcaption>
+          <blockquote>"Mark my words — AI is far more dangerous than nukes."</blockquote>
+          <code class="voice-meta">sample_0004 · influence_weight: contested · split: eval</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c6)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">GH</span>
+            <span><strong>Geoffrey Hinton</strong><em>Godfather of deep learning · Nobel laureate</em></span>
+          </figcaption>
+          <blockquote>"The future depends on some graduate student who is deeply suspicious of everything I have said."</blockquote>
+          <code class="voice-meta">sample_0005 · gradient: ancestral · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c3)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">FL</span>
+            <span><strong>Fei-Fei Li</strong><em>Stanford HAI · ImageNet</em></span>
+          </figcaption>
+          <blockquote>"There's nothing artificial about AI. It's inspired by people, created by people, and — most importantly — impacts people."</blockquote>
+          <code class="voice-meta">sample_0006 · human_centered: true · split: train</code>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================= EXPERIENCE ============================= -->
-  <section class="section" id="experience" aria-labelledby="experience-title">
+  <section class="section section-tint" id="experience" aria-labelledby="experience-title">
     <div class="wrap">
       <h2 class="section-title reveal">The <span class="squiggle">path</span> so far</h2>
       <!-- EDIT: add a line or two under any role describing what you built/achieved -->

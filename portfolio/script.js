@@ -249,6 +249,129 @@
     });
   }
 
+  /* ---- Live neural net in the hero: drift, link, chase, fire --------- */
+  var neural = document.querySelector("canvas.neural");
+  if (neural && !prefersReducedMotion && neural.getContext) {
+    var nctx = neural.getContext("2d");
+    var heroEl = neural.closest(".hero");
+    var PALETTE = ["#ff5d6c", "#ff9524", "#ffc93c", "#12b3a3", "#6c4cf1", "#f2509e"];
+    var LINK_DIST = 120;
+    var nodes = [];
+    var mouseN = { x: -9999, y: -9999 };
+    var nw = 0, nh = 0;
+
+    var sizeNeural = function () {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var rect = heroEl.getBoundingClientRect();
+      nw = rect.width; nh = rect.height;
+      neural.width = nw * dpr; neural.height = nh * dpr;
+      nctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    sizeNeural();
+    window.addEventListener("resize", sizeNeural);
+
+    var COUNT = Math.max(26, Math.min(60, Math.floor(nw / 24)));
+    for (var n = 0; n < COUNT; n++) {
+      nodes.push({
+        x: Math.random() * nw, y: Math.random() * nh,
+        vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+        r: 1.6 + Math.random() * 2.1,
+        c: PALETTE[n % PALETTE.length],
+        flash: 0
+      });
+    }
+
+    heroEl.addEventListener("mousemove", function (e) {
+      var r = heroEl.getBoundingClientRect();
+      mouseN.x = e.clientX - r.left; mouseN.y = e.clientY - r.top;
+    });
+    heroEl.addEventListener("mouseleave", function () { mouseN.x = -9999; mouseN.y = -9999; });
+    // click anywhere in the hero -> nearby neurons fire and scatter
+    heroEl.addEventListener("click", function (e) {
+      var r = heroEl.getBoundingClientRect();
+      var cx = e.clientX - r.left, cy = e.clientY - r.top;
+      nodes.forEach(function (p) {
+        var dx = p.x - cx, dy = p.y - cy;
+        var d = Math.sqrt(dx * dx + dy * dy) || 1;
+        if (d < 240) {
+          var f = ((240 - d) / 240) * 2.8;
+          p.vx += (dx / d) * f; p.vy += (dy / d) * f;
+          p.flash = 1;
+        }
+      });
+    });
+
+    // only burn frames while the hero is on screen
+    var neuralActive = true;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        neuralActive = entries[0].isIntersecting;
+      }).observe(heroEl);
+    }
+
+    var frame = function () {
+      window.requestAnimationFrame(frame);
+      if (!neuralActive) return;
+      nctx.clearRect(0, 0, nw, nh);
+
+      var i, j, a, b2, dx, dy, d2;
+      for (i = 0; i < nodes.length; i++) {
+        a = nodes[i];
+        // gentle pull toward the cursor
+        dx = mouseN.x - a.x; dy = mouseN.y - a.y;
+        d2 = Math.sqrt(dx * dx + dy * dy);
+        if (d2 < 200 && d2 > 0.001) {
+          a.vx += (dx / d2) * 0.012; a.vy += (dy / d2) * 0.012;
+        }
+        a.x += a.vx; a.y += a.vy;
+        // soft speed limit + wall bounce
+        a.vx *= 0.992; a.vy *= 0.992;
+        if (a.x < 0 || a.x > nw) a.vx *= -1;
+        if (a.y < 0 || a.y > nh) a.vy *= -1;
+        a.x = Math.max(0, Math.min(nw, a.x));
+        a.y = Math.max(0, Math.min(nh, a.y));
+        if (a.flash > 0) a.flash -= 0.03;
+      }
+
+      // synapses
+      for (i = 0; i < nodes.length; i++) {
+        a = nodes[i];
+        for (j = i + 1; j < nodes.length; j++) {
+          b2 = nodes[j];
+          dx = a.x - b2.x; dy = a.y - b2.y;
+          d2 = Math.sqrt(dx * dx + dy * dy);
+          if (d2 < LINK_DIST) {
+            var near = Math.min(
+              Math.sqrt(Math.pow(mouseN.x - a.x, 2) + Math.pow(mouseN.y - a.y, 2)),
+              Math.sqrt(Math.pow(mouseN.x - b2.x, 2) + Math.pow(mouseN.y - b2.y, 2))
+            );
+            var boost = near < 140 ? 0.35 : 0;
+            var alpha = (1 - d2 / LINK_DIST) * 0.22 + boost + Math.max(a.flash, b2.flash) * 0.4;
+            nctx.strokeStyle = a.c;
+            nctx.globalAlpha = Math.min(alpha, 0.8);
+            nctx.lineWidth = boost ? 1.4 : 1;
+            nctx.beginPath();
+            nctx.moveTo(a.x, a.y);
+            nctx.lineTo(b2.x, b2.y);
+            nctx.stroke();
+          }
+        }
+      }
+
+      // neurons
+      for (i = 0; i < nodes.length; i++) {
+        a = nodes[i];
+        nctx.globalAlpha = 0.75 + a.flash * 0.25;
+        nctx.fillStyle = a.c;
+        nctx.beginPath();
+        nctx.arc(a.x, a.y, a.r + a.flash * 2.5, 0, Math.PI * 2);
+        nctx.fill();
+      }
+      nctx.globalAlpha = 1;
+    };
+    frame();
+  }
+
   /* ---- For the ones who open the console (hello, fellow engineer) ---- */
   try {
     var art = [
