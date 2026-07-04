@@ -348,6 +348,17 @@ html:not(.js) .hl::after, .is-visible .hl::after, html.reveal-off .hl::after { t
 .socials a { color: var(--ink-soft); text-decoration: none; font-weight: 700; }
 .socials a:hover { color: var(--c5); }
 
+.contact-list { list-style: none; margin: 2.4rem auto 0; padding: 0; display: grid; gap: 0.6rem; max-width: 33rem; text-align: left; }
+.contact-list li {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.7rem 1.2rem; border: 2px solid var(--line); border-radius: 999px;
+  background: var(--surface); transition: border-color var(--t), transform var(--t);
+}
+.contact-list li:hover { border-color: var(--c5); transform: translateX(4px); }
+.ck { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-faint); flex-shrink: 0; }
+.contact-list a { font-weight: 700; color: var(--ink); text-decoration: none; text-align: right; word-break: break-word; }
+.contact-list a:hover { color: var(--c5); }
+
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
