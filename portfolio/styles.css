@@ -334,7 +334,10 @@ html:not(.js) .hl::after, .is-visible .hl::after, html.reveal-off .hl::after { t
 .timeline-dot { position: absolute; left: -0.68rem; top: 0.2rem; width: 1.15rem; height: 1.15rem; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 3px var(--accent); }
 .timeline-date { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--accent); padding-top: 0.1rem; }
 .timeline-body h3 { font-size: 1.3rem; margin-bottom: 0.2rem; }
-.timeline-org { color: var(--ink-faint); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; }
+.timeline-org { color: var(--ink-faint); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
+.timeline-org a { color: var(--accent); text-decoration: none; }
+.timeline-org a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.timeline-loc { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-faint); margin-bottom: 0.6rem; }
 .timeline-body > p:last-child { color: var(--ink-soft); margin: 0; }
 
 /* --------------------------------------------------------------------------
