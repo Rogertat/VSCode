@@ -1,6 +1,6 @@
 # Roger — Portfolio
 
-A personal portfolio site for **Roger, AI/ML Engineer**. Elegant, responsive,
+A personal portfolio site for **Roger, AI/ML Engineer**. Bold, colorful, responsive,
 accessible, and dependency-free — plain HTML, CSS, and a little vanilla
 JavaScript. No build step, no framework.
 
@@ -12,10 +12,13 @@ JavaScript. No build step, no framework.
 
 ## Features
 
-- **Elegant Professional** design — serif display type (Fraunces) with a muted
-  navy-and-gold palette.
+- **Expressive "Spectrum" design** — a vibrant spectrum palette (coral, tangerine,
+  sunshine, teal, violet, pink) with the Bricolage Grotesque display face, a
+  highlighter-marker headline, drifting colour blobs, and a scrolling tech marquee.
 - **Light & dark mode** — respects the system preference and remembers your
   choice.
+- **Motion, done tastefully** — scroll reveals, hover micro-interactions, and an
+  auto-scrolling marquee, all disabled under `prefers-reduced-motion`.
 - **Fully responsive**, with a mobile drawer navigation.
 - **Accessible** — semantic HTML, skip link, keyboard-friendly, visible focus
   states, and honors `prefers-reduced-motion`.
@@ -42,15 +45,22 @@ portfolio/
 Everything you'll likely want to change is marked with `EDIT:` comments in
 `index.html`. The essentials:
 
-1. **Bio & headline** — the hero and *About* section.
-2. **Skills** — edit the tag lists in the *Skills* section.
-3. **Projects** — replace the four sample projects with your own, and point the
-   *Case study* / *Code* links at real URLs.
-4. **Experience** — update roles, companies, and dates in the timeline.
-5. **Contact & socials** — confirm the email (`roger29995@gmail.com`) and the
+1. **Bio & headline** — the hero (the `<span class="hl">` words get the
+   highlighter marker) and *About* section.
+2. **Skills** — edit the tag lists in the *Skills* cards (including
+   *AI Agents & Agentic Frameworks*); each card's colour comes from its
+   `--accent` variable.
+3. **Experience** — update roles, companies, and dates in the timeline.
+4. **Contact & socials** — confirm the email (`roger29995@gmail.com`) and the
    GitHub / LinkedIn links in the *Contact* section and footer.
+5. **Colors & fonts** — tweak the spectrum tokens (`--c1`…`--c6`) and font stacks
+   in the `:root` block at the top of `styles.css`.
 6. **Meta tags** — update the `<title>`, description, and Open Graph URL/image
    at the top of `index.html` once you know your deployed URL.
+
+> A *Selected work* / projects section was intentionally left out. If you want to
+> showcase projects later, add a `<section id="projects">` with cards — the
+> `.projects-grid` / `.project-card` styles are still in `styles.css`.
 
 Tweak colors and fonts in one place: the `:root` (and `[data-theme="dark"]`)
 token blocks at the top of `styles.css`.

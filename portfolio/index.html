@@ -68,7 +68,6 @@
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Work</a></li>
         <li><a href="#experience">Path</a></li>
         <li><a class="nav-cta" href="#contact">Say hi</a></li>
         <li>
@@ -106,8 +105,8 @@
       <!-- EDIT: a two-sentence intro in your own voice -->
       <p class="hero-lead reveal">
         Hey, I'm <strong>Roger</strong> — an AI/ML engineer who turns research into products
-        people actually use. Large language models, retrieval systems, real-time inference:
-        I like the messy part where a model meets the real world.
+        people actually use. Large language models, AI agents, retrieval systems, real-time
+        inference: I like the messy part where a model meets the real world.
       </p>
       <div class="hero-actions reveal">
         <a class="btn btn-primary" href="#projects">See my work</a>
@@ -127,8 +126,8 @@
   <section class="marquee-wrap" aria-hidden="true">
     <div class="marquee">
       <div class="marquee-track">
-        <span>PyTorch</span><span>TensorFlow</span><span>LLMs</span><span>Transformers</span><span>RAG</span><span>Hugging Face</span><span>scikit-learn</span><span>XGBoost</span><span>Diffusion</span><span>Vector DBs</span><span>MLflow</span>
-        <span>PyTorch</span><span>TensorFlow</span><span>LLMs</span><span>Transformers</span><span>RAG</span><span>Hugging Face</span><span>scikit-learn</span><span>XGBoost</span><span>Diffusion</span><span>Vector DBs</span><span>MLflow</span>
+        <span>PyTorch</span><span>TensorFlow</span><span>LLMs</span><span>AI Agents</span><span>LangGraph</span><span>Transformers</span><span>RAG</span><span>MCP</span><span>Hugging Face</span><span>AutoGen</span><span>scikit-learn</span><span>Diffusion</span><span>Vector DBs</span><span>MLflow</span>
+        <span>PyTorch</span><span>TensorFlow</span><span>LLMs</span><span>AI Agents</span><span>LangGraph</span><span>Transformers</span><span>RAG</span><span>MCP</span><span>Hugging Face</span><span>AutoGen</span><span>scikit-learn</span><span>Diffusion</span><span>Vector DBs</span><span>MLflow</span>
       </div>
     </div>
     <div class="marquee marquee-reverse">
@@ -187,6 +186,10 @@
           <h3>Deep Learning &amp; NLP</h3>
           <ul class="chips"><li>Transformers</li><li>LLMs</li><li>Hugging Face</li><li>RAG</li><li>Diffusion</li></ul>
         </article>
+        <article class="skill-card reveal" style="--accent: var(--c6)">
+          <h3>AI Agents &amp; Agentic Frameworks</h3>
+          <ul class="chips"><li>LangGraph</li><li>AutoGen</li><li>CrewAI</li><li>MCP</li><li>ReAct</li><li>Tool use</li><li>Multi-agent</li></ul>
+        </article>
         <article class="skill-card reveal" style="--accent: var(--c3)">
           <h3>MLOps &amp; Infra</h3>
           <ul class="chips"><li>Docker</li><li>Kubernetes</li><li>MLflow</li><li>Airflow</li><li>Ray</li><li>AWS / GCP</li></ul>
@@ -207,69 +210,8 @@
     </div>
   </section>
 
-  <!-- ============================= PROJECTS ============================= -->
-  <section class="section" id="projects" aria-labelledby="projects-title">
-    <div class="wrap">
-      <h2 class="section-title reveal">Selected <span class="squiggle">work</span></h2>
-      <!-- EDIT: replace with your real projects + links -->
-      <div class="projects-grid">
-        <article class="project-card reveal" style="--accent: var(--c5)">
-          <div class="project-top"><span class="project-num">01</span><span class="project-year">2025</span></div>
-          <h3>Retrieval-Augmented Assistant</h3>
-          <p>A production RAG assistant over domain docs: hybrid search, a reranking layer,
-             and grounded answers with citations — built to speed up support resolution
-             while keeping hallucinations in check.</p>
-          <ul class="chips mono"><li>LLMs</li><li>Vector DB</li><li>FastAPI</li><li>LangChain</li></ul>
-          <div class="project-links">
-            <a href="#" aria-label="View Retrieval-Augmented Assistant case study">Case study</a>
-            <a href="https://github.com/Rogertat" aria-label="Retrieval-Augmented Assistant source on GitHub">Code</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal" style="--accent: var(--c1)">
-          <div class="project-top"><span class="project-num">02</span><span class="project-year">2024</span></div>
-          <h3>Real-Time Fraud Detection</h3>
-          <p>A streaming ML pipeline scoring transactions in milliseconds. Feature store,
-             gradient-boosted models, and drift monitoring — with a human-in-the-loop review
-             queue for edge cases.</p>
-          <ul class="chips mono"><li>XGBoost</li><li>Kafka</li><li>Feature Store</li><li>Redis</li></ul>
-          <div class="project-links">
-            <a href="#" aria-label="View Real-Time Fraud Detection case study">Case study</a>
-            <a href="https://github.com/Rogertat" aria-label="Real-Time Fraud Detection source on GitHub">Code</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal" style="--accent: var(--c4)">
-          <div class="project-top"><span class="project-num">03</span><span class="project-year">2023</span></div>
-          <h3>Vision Quality Inspection</h3>
-          <p>A defect-detection model deployed to edge devices on the factory floor. Quantized
-             CNNs exported to ONNX for low-latency inference, with an active learning loop to
-             improve on rare defects.</p>
-          <ul class="chips mono"><li>PyTorch</li><li>ONNX</li><li>Edge</li><li>Active Learning</li></ul>
-          <div class="project-links">
-            <a href="#" aria-label="View Vision Quality Inspection case study">Case study</a>
-            <a href="https://github.com/Rogertat" aria-label="Vision Quality Inspection source on GitHub">Code</a>
-          </div>
-        </article>
-
-        <article class="project-card reveal" style="--accent: var(--c2)">
-          <div class="project-top"><span class="project-num">04</span><span class="project-year">2022</span></div>
-          <h3>Recommendation Engine</h3>
-          <p>A two-tower retrieval model serving personalized recommendations at scale. Learned
-             embeddings, approximate nearest-neighbor search, and an online evaluation harness
-             for continuous improvement.</p>
-          <ul class="chips mono"><li>TensorFlow</li><li>Embeddings</li><li>ANN</li><li>Spark</li></ul>
-          <div class="project-links">
-            <a href="#" aria-label="View Recommendation Engine case study">Case study</a>
-            <a href="https://github.com/Rogertat" aria-label="Recommendation Engine source on GitHub">Code</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- ============================= EXPERIENCE ============================= -->
-  <section class="section section-tint" id="experience" aria-labelledby="experience-title">
+  <section class="section" id="experience" aria-labelledby="experience-title">
     <div class="wrap">
       <h2 class="section-title reveal">The <span class="squiggle">path</span> so far</h2>
       <!-- EDIT: your real roles, companies, and dates -->
