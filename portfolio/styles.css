@@ -303,6 +303,7 @@ html.reveal-off .reveal { opacity: 1 !important; transform: none !important; } /
   font-size: clamp(2.5rem, 1.7rem + 4.6vw, 4.9rem);
   letter-spacing: -0.02em;
   margin-bottom: 1.4rem;
+  text-wrap: balance; /* nicer line breaks where supported */
 }
 .hero-title em {
   font-style: italic;
@@ -609,7 +610,7 @@ html.reveal-off .reveal { opacity: 1 !important; transform: none !important; } /
   .nav-toggle {
     display: inline-grid;
     place-items: center;
-    width: 42px; height: 42px;
+    width: 44px; height: 44px; /* min 44px touch target */
     background: transparent;
     border: 1px solid var(--line);
     border-radius: 10px;
@@ -655,7 +656,14 @@ html.reveal-off .reveal { opacity: 1 !important; transform: none !important; } /
     visibility: visible;
     transition: transform var(--transition), visibility 0s;
   }
-  .nav-menu a { font-size: 1.15rem; }
+  /* display:block so vertical padding actually grows the tap target
+     (padding does not affect the layout height of inline elements) */
+  .nav-menu a { font-size: 1.15rem; padding: 0.6rem 0; display: block; }
+}
+
+@media (max-width: 600px) {
+  /* The hardcoded line break helps the desktop title but crams it on phones */
+  .hero-title br { display: none; }
 }
 
 @media (max-width: 480px) {
