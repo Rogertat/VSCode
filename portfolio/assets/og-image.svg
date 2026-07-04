@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Roger — AI/ML Engineer">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16233f"/>
+      <stop offset="1" stop-color="#0d1526"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="22%" r="55%">
+      <stop offset="0" stop-color="#b08a3e" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#b08a3e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="40" y="40" width="1120" height="550" rx="20" fill="none" stroke="#b08a3e" stroke-opacity="0.4" stroke-width="1.5"/>
+  <text x="100" y="250" font-family="'Courier New', monospace" font-size="26" letter-spacing="8" fill="#d8b465">AI / ML ENGINEER</text>
+  <text x="96" y="360" font-family="Georgia, serif" font-size="112" fill="#f3eee0">Roger</text>
+  <text x="100" y="430" font-family="Georgia, serif" font-size="34" font-style="italic" fill="#c7ccd6">Systems that learn, reason, and scale.</text>
+  <text x="100" y="545" font-family="'Courier New', monospace" font-size="22" fill="#8790a4">github.com/Rogertat</text>
+</svg>

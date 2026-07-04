@@ -1,0 +1,391 @@
+<!--
+  Roger — AI/ML Engineer · Personal Portfolio
+  ------------------------------------------------------------------
+  Everything you'll want to personalize is marked with  EDIT:  comments.
+  A single HTML file, plus styles.css and script.js. No build step.
+  See README.md for a customization checklist and deploy instructions.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Roger — AI/ML Engineer</title>
+<meta name="description" content="Roger is an AI/ML Engineer building intelligent systems that learn, reason, and scale — from research prototypes to production." />
+<meta name="author" content="Roger" />
+<meta name="color-scheme" content="light dark" />
+
+<!-- Open Graph / social preview.
+     EDIT: once deployed, replace the two absolute URLs below with your real domain
+     (social crawlers require absolute https URLs and a raster image, not SVG). -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://rogertat.github.io/portfolio/" />
+<meta property="og:title" content="Roger — AI/ML Engineer" />
+<meta property="og:description" content="AI/ML Engineer building intelligent systems that learn, reason, and scale." />
+<meta property="og:image" content="https://rogertat.github.io/portfolio/assets/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://rogertat.github.io/portfolio/assets/og-image.png" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="styles.css" />
+
+<!-- Fonts: elegant serif display + clean sans body. Degrades to system fonts offline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Set theme + enable progressive enhancement before first paint (avoids flash) -->
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add("js");
+    // Failsafe: the "js" class hides .reveal elements so they can animate in.
+    // If script.js never runs (blocked / 404 / error), reveal them anyway
+    // instead of leaving the page blank.
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        if (!window.__revealReady) d.classList.add("reveal-off");
+      }, 800);
+    });
+    try {
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      d.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+    } catch (e) {
+      d.setAttribute("data-theme", "light");
+    }
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================= HEADER / NAV ============================= -->
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Roger — home">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span class="brand-name">Roger</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"/></g></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="currentColor"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============================= HERO ============================= -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <p class="eyebrow reveal">AI/ML Engineer</p>
+      <!-- EDIT: your headline / positioning statement -->
+      <h1 class="hero-title reveal" id="hero-title">
+        I build intelligent systems that<br />
+        <em>learn, reason,</em> and scale.
+      </h1>
+      <!-- EDIT: a two-sentence intro in your own voice -->
+      <p class="hero-lead reveal">
+        I'm Roger — a machine learning engineer who turns research into reliable,
+        production-grade systems. From large language models and retrieval pipelines
+        to real-time inference, I care about work that ships and holds up.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <button class="btn btn-quiet" type="button" data-print aria-label="Print or save résumé">Résumé</button>
+      </div>
+      <ul class="hero-meta reveal" aria-label="At a glance">
+        <li><strong>7+ yrs</strong><span>in ML &amp; data</span></li>
+        <li><strong>LLMs · RAG</strong><span>NLP systems</span></li>
+        <li><strong>MLOps</strong><span>ship to prod</span></li>
+      </ul>
+    </div>
+    <div class="hero-glow" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============================= ABOUT ============================= -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-index">01</span>
+        <h2 class="section-title" id="about-title">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-body reveal">
+          <!-- EDIT: two or three short paragraphs in your own voice -->
+          <p class="lead">
+            I design and deploy machine learning systems end to end — framing the
+            problem, building the models, and standing up the infrastructure that
+            keeps them healthy in production.
+          </p>
+          <p>
+            My work spans natural language processing, recommendation, and computer
+            vision, with a recent focus on large language models, retrieval-augmented
+            generation, and evaluation. I like the space where solid research meets
+            careful engineering: reproducible experiments, clean data pipelines, and
+            monitoring that catches drift before users do.
+          </p>
+          <p>
+            Outside of shipping models, I enjoy writing about applied ML and mentoring
+            engineers who are moving from notebooks into production.
+          </p>
+        </div>
+        <aside class="about-card reveal" aria-label="Quick facts">
+          <dl>
+            <div><dt>Role</dt><dd>AI/ML Engineer</dd></div>
+            <div><dt>Focus</dt><dd>LLMs · NLP · MLOps</dd></div>
+            <div><dt>Location</dt><dd>Remote / Worldwide</dd></div><!-- EDIT -->
+            <div><dt>Status</dt><dd>Open to opportunities</dd></div><!-- EDIT -->
+          </dl>
+          <a class="about-card-link" href="#contact">Let's talk &rarr;</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= SKILLS ============================= -->
+  <section class="section section-alt" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-index">02</span>
+        <h2 class="section-title" id="skills-title">Skills &amp; Expertise</h2>
+      </div>
+      <!-- EDIT: adjust groups + tags to match your stack -->
+      <div class="skills-grid">
+        <article class="skill-card reveal">
+          <h3>Machine Learning</h3>
+          <ul class="tags">
+            <li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li>
+            <li>XGBoost</li><li>Keras</li>
+          </ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3>Deep Learning &amp; NLP</h3>
+          <ul class="tags">
+            <li>Transformers</li><li>LLMs</li><li>Hugging Face</li>
+            <li>RAG</li><li>Diffusion</li>
+          </ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3>MLOps &amp; Infrastructure</h3>
+          <ul class="tags">
+            <li>Docker</li><li>Kubernetes</li><li>MLflow</li>
+            <li>Airflow</li><li>Ray</li><li>AWS / GCP</li>
+          </ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3>Languages &amp; Data</h3>
+          <ul class="tags">
+            <li>Python</li><li>SQL</li><li>Spark</li>
+            <li>Pandas</li><li>NumPy</li>
+          </ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3>Serving &amp; APIs</h3>
+          <ul class="tags">
+            <li>FastAPI</li><li>gRPC</li><li>ONNX</li>
+            <li>Triton</li><li>Vector DBs</li>
+          </ul>
+        </article>
+        <article class="skill-card reveal">
+          <h3>Practices</h3>
+          <ul class="tags">
+            <li>Experiment tracking</li><li>CI/CD</li><li>Evaluation</li>
+            <li>Monitoring</li><li>A/B testing</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= PROJECTS ============================= -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-index">03</span>
+        <h2 class="section-title" id="projects-title">Selected Projects</h2>
+      </div>
+      <!-- EDIT: replace with your real projects + links -->
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <div class="project-top">
+            <h3>Retrieval-Augmented Assistant</h3>
+            <span class="project-year">2025</span>
+          </div>
+          <p>
+            A production RAG assistant over domain documents: hybrid search, a reranking
+            layer, and grounded answers with citations — built to speed up support
+            resolution while keeping hallucinations in check.
+          </p>
+          <ul class="tags mono">
+            <li>LLMs</li><li>Vector DB</li><li>FastAPI</li><li>LangChain</li>
+          </ul>
+          <div class="project-links">
+            <a href="#" aria-label="View Retrieval-Augmented Assistant case study">Case study &rarr;</a>
+            <a href="https://github.com/Rogertat" aria-label="Retrieval-Augmented Assistant source on GitHub">Code &rarr;</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-top">
+            <h3>Real-Time Fraud Detection</h3>
+            <span class="project-year">2024</span>
+          </div>
+          <p>
+            A streaming ML pipeline scoring transactions in milliseconds. Feature store,
+            gradient-boosted models, and drift monitoring — with a human-in-the-loop
+            review queue for edge cases.
+          </p>
+          <ul class="tags mono">
+            <li>XGBoost</li><li>Kafka</li><li>Feature Store</li><li>Redis</li>
+          </ul>
+          <div class="project-links">
+            <a href="#" aria-label="View Real-Time Fraud Detection case study">Case study &rarr;</a>
+            <a href="https://github.com/Rogertat" aria-label="Real-Time Fraud Detection source on GitHub">Code &rarr;</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-top">
+            <h3>Vision Quality Inspection</h3>
+            <span class="project-year">2023</span>
+          </div>
+          <p>
+            A defect-detection model deployed to edge devices on the factory floor.
+            Quantized CNNs exported to ONNX for low-latency inference, with an active
+            learning loop to improve on rare defects.
+          </p>
+          <ul class="tags mono">
+            <li>PyTorch</li><li>ONNX</li><li>Edge</li><li>Active Learning</li>
+          </ul>
+          <div class="project-links">
+            <a href="#" aria-label="View Vision Quality Inspection case study">Case study &rarr;</a>
+            <a href="https://github.com/Rogertat" aria-label="Vision Quality Inspection source on GitHub">Code &rarr;</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-top">
+            <h3>Recommendation Engine</h3>
+            <span class="project-year">2022</span>
+          </div>
+          <p>
+            A two-tower retrieval model serving personalized recommendations at scale.
+            Learned embeddings, approximate nearest-neighbor search, and an online
+            evaluation harness for continuous improvement.
+          </p>
+          <ul class="tags mono">
+            <li>TensorFlow</li><li>Embeddings</li><li>ANN</li><li>Spark</li>
+          </ul>
+          <div class="project-links">
+            <a href="#" aria-label="View Recommendation Engine case study">Case study &rarr;</a>
+            <a href="https://github.com/Rogertat" aria-label="Recommendation Engine source on GitHub">Code &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= EXPERIENCE ============================= -->
+  <section class="section section-alt" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-index">04</span>
+        <h2 class="section-title" id="experience-title">Experience</h2>
+      </div>
+      <!-- EDIT: your real roles, companies, and dates -->
+      <ol class="timeline">
+        <li class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="timeline-date">2023 — Present</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Senior Machine Learning Engineer</h3>
+            <p class="timeline-org">Company Name</p>
+            <p>
+              Lead ML systems for the flagship product — LLM-powered features, retrieval
+              infrastructure, and the evaluation pipelines that keep quality measurable.
+              Mentor engineers and set the team's MLOps standards.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="timeline-date">2021 — 2023</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Machine Learning Engineer</h3>
+            <p class="timeline-org">Company Name</p>
+            <p>
+              Built and deployed models across NLP and recommendation, owning the path
+              from experimentation to production, monitoring, and iteration.
+            </p>
+          </div>
+        </li>
+        <li class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="timeline-date">2019 — 2021</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Data Scientist</h3>
+            <p class="timeline-org">Company Name</p>
+            <p>
+              Delivered analytics and predictive models that informed product and
+              business decisions, and laid the groundwork for the team's first
+              production ML services.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================= CONTACT ============================= -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-inner reveal">
+      <span class="section-index">05</span>
+      <h2 class="section-title" id="contact-title">Let's build something</h2>
+      <p class="contact-lead">
+        Have a role, a project, or an idea you'd like to talk through?
+        I'm always happy to connect.
+      </p>
+      <!-- EDIT: confirm the email + social links below -->
+      <a class="btn btn-primary btn-lg" href="mailto:roger29995@gmail.com">Email me &rarr;</a>
+      <ul class="socials" aria-label="Social links">
+        <li><a href="https://github.com/Rogertat" rel="me noopener" target="_blank">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" rel="me noopener" target="_blank">LinkedIn</a></li>
+        <li><a href="mailto:roger29995@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="brand-mark small" aria-hidden="true">R</span>
+    <p>&copy; <span data-year>2026</span> Roger. Built with care.</p>
+    <a href="#top" class="to-top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
