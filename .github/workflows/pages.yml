@@ -1,6 +1,8 @@
-# Deploys the portfolio/ folder to GitHub Pages on every push to main.
-# configure-pages enablement:true creates the Pages site on first run,
-# so no manual Settings -> Pages step is needed.
+# Publishes the portfolio/ folder to the gh-pages branch on every push to
+# main. GitHub Pages serves that branch (creating the gh-pages branch
+# auto-enabled Pages, so no manual settings step was needed). The Pages API
+# route (actions/configure-pages) was not usable here: creating the Pages
+# site with GITHUB_TOKEN fails with "Resource not accessible by integration".
 name: Deploy portfolio to GitHub Pages
 
 on:
@@ -12,9 +14,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -23,23 +23,15 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
+      - name: Checkout (full history for subtree split)
         uses: actions/checkout@v4
-
-      - name: Configure Pages (enables the site on first run)
-        uses: actions/configure-pages@v5
         with:
-          enablement: true
+          fetch-depth: 0
 
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: portfolio
-
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Push portfolio/ to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          SPLIT=$(git subtree split --prefix portfolio HEAD)
+          git push -f origin "$SPLIT:refs/heads/gh-pages"
