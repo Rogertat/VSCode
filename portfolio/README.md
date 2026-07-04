@@ -24,15 +24,6 @@ JavaScript. No build step, no framework.
   your cursor, and fire when you click.
 - **"Voices in my training data"** — famous AI figures (Karpathy, Amodei, Ng,
   Musk, Hinton, Fei-Fei Li) rendered as dataset records with influence weights.
-- **mini-Roger, the page companion** — a chibi engineer in the corner whose eyes
-  follow your cursor. He blinks, waves hello, quips as you scroll between
-  sections, naps if you idle, hops when clicked, and can be dismissed (per
-  session). To replace him with an anime portrait of yourself: generate one in
-  any image tool, save it to `assets/`, and swap the inline `<svg>` inside
-  `.companion-figure` in `index.html` for
-  `<img src="assets/your-anime.png" alt="" width="104">` — the bob, bubbles,
-  quips, nap, and dismiss rig all keep working (only the eye-tracking and wave
-  are SVG-specific).
 - **Easter eggs** — "roger-oracle", a tiny fake-inference terminal in the contact
   section that predicts whether you should reach out, and an ASCII greeting in
   the browser console for engineers who peek.
