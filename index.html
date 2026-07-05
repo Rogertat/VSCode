@@ -1,0 +1,404 @@
+<!--
+  Roger — AI/ML Engineer · Personal Portfolio  (Spectrum edition)
+  ------------------------------------------------------------------
+  Expressive, colorful, motion-forward. Single HTML file + styles.css + script.js.
+  Everything you'll want to personalize is marked with  EDIT:  comments.
+  See README.md for a customization checklist and deploy instructions.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Roger — AI/ML Engineer</title>
+<meta name="description" content="Roger is an AI/ML Engineer building intelligent systems that learn, reason, and decide — from research notebooks to production." />
+<meta name="author" content="Roger" />
+<meta name="color-scheme" content="light dark" />
+
+<!-- Open Graph / social preview (LinkedIn, WhatsApp, X pull these) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://rogertat.github.io/VSCode/" />
+<meta property="og:title" content="Roger — AI/ML Engineer" />
+<meta property="og:description" content="AI/ML Engineer building intelligent systems that learn, reason, and decide." />
+<meta property="og:image" content="https://rogertat.github.io/VSCode/assets/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://rogertat.github.io/VSCode/assets/og-image.png" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="styles.css" />
+
+<!-- Fonts: expressive display (Bricolage Grotesque) + friendly body (Hanken Grotesk)
+     + technical mono (Space Mono). Degrades to system fonts offline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add("js");
+    window.addEventListener("load", function () {
+      setTimeout(function () { if (!window.__revealReady) d.classList.add("reveal-off"); }, 800);
+    });
+    try {
+      var saved = localStorage.getItem("theme");
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      d.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+    } catch (e) { d.setAttribute("data-theme", "light"); }
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================= HEADER / NAV ============================= -->
+<header class="site-header" id="top">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Roger — home">
+      <span class="brand-mark" aria-hidden="true">R</span>
+      <span class="brand-name">Roger<span class="brand-dot">.</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Path</a></li>
+        <li><a class="nav-cta" href="#contact">Say hi</a></li>
+        <li>
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8 6 18M18 6l1.8-1.8"/></g></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="currentColor"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============================= HERO ============================= -->
+  <section class="hero" aria-labelledby="hero-title">
+    <!-- drifting organic shapes -->
+    <div class="blobs" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+      <span class="blob blob-4"></span>
+    </div>
+    <!-- live neural net: neurons drift, link, chase your cursor; click to fire -->
+    <canvas class="neural" aria-hidden="true"></canvas>
+
+    <div class="wrap hero-inner">
+      <p class="status reveal"><span class="status-dot" aria-hidden="true"></span> Open to new opportunities</p>
+      <!-- EDIT: your headline. The <span class="hl"> words get the highlighter marker. -->
+      <h1 class="hero-title reveal" id="hero-title">
+        Machines that
+        <span class="hl hl-1">learn</span>,
+        <span class="hl hl-2">reason</span>,
+        and <span class="hl hl-3">decide</span> —
+        built to ship.
+      </h1>
+      <!-- EDIT: a two-sentence intro in your own voice -->
+      <p class="hero-lead reveal">
+        Hey, I'm <strong>Roger</strong> — an AI/ML engineer who turns research into products
+        people actually use. Large language models, AI agents, retrieval systems, real-time
+        inference: I like the messy part where a model meets the real world.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#experience">Trace my path</a>
+        <a class="btn btn-outline" href="#contact">Say hi <span aria-hidden="true">&rarr;</span></a>
+        <button class="btn btn-text" type="button" data-print>Résumé</button>
+      </div>
+
+      <dl class="stats reveal" aria-label="At a glance">
+        <div><dt>Years in AI &amp; ML</dt><dd class="num num-1">6+</dd></div>
+        <div><dt>Companies shipped for</dt><dd class="num num-2">6</dd></div>
+        <div><dt>Coffee-to-code ratio</dt><dd class="num num-3">1:1</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============================= SKILLS MARQUEE ============================= -->
+  <section class="marquee-wrap" aria-hidden="true">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>PyTorch</span><span>TensorFlow</span><span>LLMs</span><span>AI Agents</span><span>LangGraph</span><span>Fine-tuning</span><span>LoRA</span><span>QLoRA</span><span>Quantization</span><span>Transformers</span><span>RAG</span><span>MCP</span><span>Hugging Face</span><span>AutoGen</span><span>Vector DBs</span><span>MLflow</span>
+        <span>PyTorch</span><span>TensorFlow</span><span>LLMs</span><span>AI Agents</span><span>LangGraph</span><span>Fine-tuning</span><span>LoRA</span><span>QLoRA</span><span>Quantization</span><span>Transformers</span><span>RAG</span><span>MCP</span><span>Hugging Face</span><span>AutoGen</span><span>Vector DBs</span><span>MLflow</span>
+      </div>
+    </div>
+    <div class="marquee marquee-reverse">
+      <div class="marquee-track">
+        <span>Docker</span><span>Kubernetes</span><span>Ray</span><span>Airflow</span><span>FastAPI</span><span>AWS</span><span>GCP</span><span>Spark</span><span>ONNX</span><span>Triton</span><span>Weights &amp; Biases</span>
+        <span>Docker</span><span>Kubernetes</span><span>Ray</span><span>Airflow</span><span>FastAPI</span><span>AWS</span><span>GCP</span><span>Spark</span><span>ONNX</span><span>Triton</span><span>Weights &amp; Biases</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= ABOUT ============================= -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div class="about-body reveal">
+        <h2 class="section-title" id="about-title">A bit <span class="squiggle">about me</span></h2>
+        <!-- EDIT: two or three short paragraphs in your own voice -->
+        <p class="lead">
+          I design and deploy machine learning systems end to end — framing the problem,
+          building the models, and standing up the infrastructure that keeps them healthy
+          in production.
+        </p>
+        <p>
+          My work spans NLP, recommendation, and computer vision — and lately, the frontier
+          I can't put down: <strong>AI agents</strong>. LLMs that don't just answer questions
+          but plan, call tools, write code, and check their own work — orchestrated with
+          LangGraph, AutoGen, and MCP, grounded with retrieval, and held honest by ruthless
+          evaluation. And I don't just use models — I tune them: LoRA/QLoRA fine-tuning,
+          quantization, and inference optimization that make big models run fast on
+          small budgets. I love the spot where solid research meets careful engineering:
+          reproducible experiments, clean pipelines, and monitoring that catches drift
+          before users do.
+        </p>
+        <p>
+          Off the clock, I write about applied ML and mentor engineers making the jump from
+          notebooks to production.
+        </p>
+      </div>
+      <aside class="about-card reveal" aria-label="Quick facts">
+        <ul class="facts">
+          <li><span class="facts-k">Now</span><span class="facts-v">Sr. Executive — AI Engineering, Xerago</span></li>
+          <li><span class="facts-k">Focus</span><span class="facts-v">LLMs · Agents · MLOps</span></li>
+          <li><span class="facts-k">Based</span><span class="facts-v">Tamil Nadu, India</span></li>
+          <li><span class="facts-k">Vibe</span><span class="facts-v">Curious &amp; shipping</span></li><!-- EDIT -->
+        </ul>
+        <a class="about-card-link" href="#contact">Let's talk <span aria-hidden="true">&rarr;</span></a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================= SKILLS ============================= -->
+  <section class="section section-tint" id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <h2 class="section-title reveal">Things I'm <span class="squiggle">good at</span></h2>
+      <!-- EDIT: adjust groups + tags to match your stack -->
+      <div class="skills-grid">
+        <article class="skill-card reveal" data-icon="🧠" style="--accent: var(--c1)">
+          <h3>Machine Learning</h3>
+          <ul class="chips"><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>XGBoost</li><li>Keras</li></ul>
+        </article>
+        <article class="skill-card reveal" data-icon="💬" style="--accent: var(--c2)">
+          <h3>Deep Learning &amp; NLP</h3>
+          <ul class="chips"><li>Transformers</li><li>LLMs</li><li>Hugging Face</li><li>RAG</li><li>Diffusion</li></ul>
+        </article>
+        <article class="skill-card reveal" data-icon="🤖" style="--accent: var(--c6)">
+          <h3>AI Agents &amp; Agentic Frameworks</h3>
+          <ul class="chips"><li>LangGraph</li><li>AutoGen</li><li>CrewAI</li><li>MCP</li><li>ReAct</li><li>Tool use</li><li>Multi-agent</li></ul>
+        </article>
+        <article class="skill-card reveal" data-icon="⚡" style="--accent: var(--c2)">
+          <h3>Model Training &amp; Optimization</h3>
+          <ul class="chips"><li>Model training</li><li>Fine-tuning</li><li>LoRA</li><li>QLoRA</li><li>Quantization</li><li>Inference optimization</li></ul>
+        </article>
+        <article class="skill-card reveal" data-icon="⚙️" style="--accent: var(--c3)">
+          <h3>MLOps &amp; Infra</h3>
+          <ul class="chips"><li>Docker</li><li>Kubernetes</li><li>MLflow</li><li>Airflow</li><li>Ray</li><li>AWS / GCP</li></ul>
+        </article>
+        <article class="skill-card reveal" data-icon="📊" style="--accent: var(--c4)">
+          <h3>Languages &amp; Data</h3>
+          <ul class="chips"><li>Python</li><li>SQL</li><li>Spark</li><li>Pandas</li><li>NumPy</li></ul>
+        </article>
+        <article class="skill-card reveal" data-icon="🚀" style="--accent: var(--c5)">
+          <h3>Serving &amp; APIs</h3>
+          <ul class="chips"><li>FastAPI</li><li>gRPC</li><li>ONNX</li><li>Triton</li><li>Vector DBs</li></ul>
+        </article>
+        <article class="skill-card reveal" data-icon="🧪" style="--accent: var(--c1)">
+          <h3>Practices</h3>
+          <ul class="chips"><li>Experiment tracking</li><li>CI/CD</li><li>Evaluation</li><li>Monitoring</li><li>A/B testing</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= VOICES ============================= -->
+  <section class="section" id="voices" aria-labelledby="voices-title">
+    <div class="wrap">
+      <h2 class="section-title reveal" id="voices-title">Voices in my <span class="squiggle">training data</span></h2>
+      <p class="voices-sub reveal">Every engineer is fine-tuned on someone. My gradient updates come from these folks.</p>
+      <div class="voices-grid">
+        <figure class="voice-card reveal" style="--accent: var(--c5)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">AK</span>
+            <span><strong>Andrej Karpathy</strong><em>OpenAI founding team · ex-Tesla AI</em></span>
+          </figcaption>
+          <blockquote>"The hottest new programming language is English."</blockquote>
+          <code class="voice-meta">sample_0001 · influence_weight: 0.97 · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c1)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">DA</span>
+            <span><strong>Dario Amodei</strong><em>CEO, Anthropic</em></span>
+          </figcaption>
+          <blockquote>"A country of geniuses in a datacenter."</blockquote>
+          <code class="voice-meta">sample_0002 · influence_weight: 0.94 · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c4)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">AN</span>
+            <span><strong>Andrew Ng</strong><em>Founder, DeepLearning.AI</em></span>
+          </figcaption>
+          <blockquote>"AI is the new electricity."</blockquote>
+          <code class="voice-meta">sample_0003 · first_epoch: true · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c2)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">EM</span>
+            <span><strong>Elon Musk</strong><em>xAI · Tesla · SpaceX</em></span>
+          </figcaption>
+          <blockquote>"Mark my words — AI is far more dangerous than nukes."</blockquote>
+          <code class="voice-meta">sample_0004 · influence_weight: contested · split: eval</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c6)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">GH</span>
+            <span><strong>Geoffrey Hinton</strong><em>Godfather of deep learning · Nobel laureate</em></span>
+          </figcaption>
+          <blockquote>"The future depends on some graduate student who is deeply suspicious of everything I have said."</blockquote>
+          <code class="voice-meta">sample_0005 · gradient: ancestral · split: train</code>
+        </figure>
+
+        <figure class="voice-card reveal" style="--accent: var(--c3)">
+          <figcaption class="voice-head">
+            <span class="voice-avatar" aria-hidden="true">FL</span>
+            <span><strong>Fei-Fei Li</strong><em>Stanford HAI · ImageNet</em></span>
+          </figcaption>
+          <blockquote>"There's nothing artificial about AI. It's inspired by people, created by people, and — most importantly — impacts people."</blockquote>
+          <code class="voice-meta">sample_0006 · human_centered: true · split: train</code>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= EXPERIENCE ============================= -->
+  <section class="section section-tint" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <h2 class="section-title reveal">The <span class="squiggle">path</span> so far</h2>
+      <!-- EDIT: add a line or two under any role describing what you built/achieved -->
+      <ol class="timeline">
+        <li class="timeline-item reveal" style="--accent: var(--c5)">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <span class="timeline-date">2026 — Present</span>
+          <div class="timeline-body">
+            <h3>Sr. Executive — AI Engineering</h3>
+            <p class="timeline-org"><a href="https://www.xerago.ai/" rel="noopener" target="_blank">Xerago</a> · Full-time</p>
+            <p class="timeline-loc">Chennai, Tamil Nadu, India</p>
+            <p>AI engineering at Xerago, an AI-powered enterprise platform that turns
+               fragmented digital stacks — CRM, CDP, commerce, analytics — into
+               coordinated execution across BFSI, retail, telecom, and healthcare.</p>
+          </div>
+        </li>
+        <li class="timeline-item reveal" style="--accent: var(--c1)">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <span class="timeline-date">Apr 2025 — Feb 2026</span>
+          <div class="timeline-body">
+            <h3>Artificial Intelligence Engineer</h3>
+            <p class="timeline-org"><a href="https://wikpoltsoftwares.com/" rel="noopener" target="_blank">Wikpolt Softwares Private Limited</a> · Full-time</p>
+            <p class="timeline-loc">Nagercoil, Tamil Nadu, India · On-site</p>
+            <p>Built applied-AI features at a custom software studio — the part of the job
+               where "advanced AI solutions" has to survive contact with real users.</p>
+          </div>
+        </li>
+        <li class="timeline-item reveal" style="--accent: var(--c4)">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <span class="timeline-date">Oct 2023 — Apr 2025</span>
+          <div class="timeline-body">
+            <h3>AI ML Support Analyst</h3>
+            <p class="timeline-org"><a href="https://capestart.com/" rel="noopener" target="_blank">CapeStart</a> · Full-time</p>
+            <p class="timeline-loc">Nagercoil, Tamil Nadu, India · Hybrid</p>
+            <p>Kept AI/ML pipelines healthy at a Cambridge, MA-headquartered AI services firm
+               serving healthcare and life sciences — where "the model is down" is not an
+               acceptable sentence.</p>
+          </div>
+        </li>
+        <li class="timeline-item reveal" style="--accent: var(--c2)">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <span class="timeline-date">Oct 2021 — Aug 2023</span>
+          <div class="timeline-body">
+            <h3>AI ML Operations and Data</h3>
+            <p class="timeline-org">Prisca · Part-time</p>
+            <p class="timeline-loc">Nagercoil, Tamil Nadu, India · Remote</p>
+          </div>
+        </li>
+        <li class="timeline-item reveal" style="--accent: var(--c6)">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <span class="timeline-date">Sep 2019 — Aug 2023</span>
+          <div class="timeline-body">
+            <h3>AI Engineer</h3>
+            <p class="timeline-org"><a href="https://aloinfotech.in/" rel="noopener" target="_blank">ALO Info-Tech</a> · Full-time</p>
+            <p class="timeline-loc">Nagercoil, Tamil Nadu, India · On-site</p>
+            <p>Four years at an IT services shop doing AI, apps, and web — the full-stack
+               years where I learned that shipping beats theorizing.</p>
+          </div>
+        </li>
+        <li class="timeline-item reveal" style="--accent: var(--c3)">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <span class="timeline-date">Sep 2019 — Sep 2021</span>
+          <div class="timeline-body">
+            <h3>AI ML Data and Operations</h3>
+            <p class="timeline-org"><a href="http://www.tropicknitsindia.com/about.html" rel="noopener" target="_blank">Tropic Knits</a> · Part-time</p>
+            <p class="timeline-loc">Coimbatore, Tamil Nadu, India · Remote</p>
+            <p>Data and ML operations for a knitwear manufacturer — proof that data
+               pipelines belong everywhere, even on a textile floor.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================= CONTACT ============================= -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-inner reveal">
+      <h2 class="contact-title" id="contact-title">Let's build<br />something <span class="hl hl-2">fun</span>.</h2>
+      <p class="contact-lead">Got a role, a project, or a wild idea? My inbox is open.</p>
+
+      <!-- A tiny, extremely serious inference engine. -->
+      <div class="oracle" role="group" aria-label="Should you reach out? Ask the model (a joke widget)">
+        <div class="oracle-bar" aria-hidden="true">
+          <span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span>
+          <code>roger-oracle-v6.2 · 4-bit quantized · runs on pure vibes</code>
+        </div>
+        <div class="oracle-screen" data-oracle-screen aria-live="polite">
+          <p class="oracle-line">&gt; model loaded. unsure whether to reach out? ask the model.</p>
+        </div>
+        <button class="oracle-run" type="button" data-oracle>▶ Run inference</button>
+      </div>
+      <a class="btn btn-primary btn-lg" href="mailto:roger29995@gmail.com">Email me <span aria-hidden="true">&rarr;</span></a>
+      <!-- EDIT: your contact details. Values are shown as text so they're always
+           readable/copyable, and linked for devices with a mail/phone/WhatsApp app. -->
+      <ul class="contact-list" aria-label="Contact details">
+        <li><span class="ck">Email</span><a href="mailto:roger29995@gmail.com">roger29995@gmail.com</a></li>
+        <li><span class="ck">Phone</span><a href="tel:+919790336035">+91&nbsp;97903&nbsp;36035</a></li>
+        <li><span class="ck">WhatsApp</span><a href="https://wa.me/919790336035" rel="noopener" target="_blank">wa.me/919790336035</a></li>
+        <li><span class="ck">GitHub</span><a href="https://github.com/Rogertat" rel="me noopener" target="_blank">github.com/Rogertat</a></li>
+        <li><span class="ck">LinkedIn</span><a href="https://www.linkedin.com/in/roger-a-741a86173/" rel="me noopener" target="_blank">linkedin.com/in/roger-a</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span class="brand-name">Roger<span class="brand-dot">.</span></span>
+    <p>&copy; <span data-year>2026</span> — built with curiosity &amp; caffeine. Zero frameworks, zero hallucinations (we checked twice).</p>
+    <a href="#top" class="to-top">Back to top <span aria-hidden="true">&uarr;</span></a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
